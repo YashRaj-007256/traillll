@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evently - College Event Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: url("https://images.unsplash.com/photo-1641509984707-72e636d042fb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+    }
+    header .content {
+      position: relative;
+      z-index: 1;
+    }
+    .events-section {
+      padding: 50px 0;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    /* Horizontal scroll rows */
+    .scroll-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .scroll-row::-webkit-scrollbar {
+      height: 8px;
+    }
+    .scroll-row::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.25);
+      border-radius: 8px;
+    }
+    .event-card {
+      flex: 0 0 auto;
+      min-width: 420px;
+      max-width: 500px;
+      scroll-snap-align: start;
+      background: #ffffff;
+      color: #111827;
+      border: 1px solid rgba(17,24,39,0.06);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .event-title { font-size: 1.25rem; font-weight: 700; }
+    .event-meta { font-size: 0.95rem; color: #6b7280; }
+    .event-desc { font-size: 0.95rem; color: #374151; }
+    .event-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; }
+    .badge-soft {
+      background: rgba(37,99,235,0.12);
+      color: #2563eb;
+    }
+    /* Section title highlight */
+    .section-title {
+      color: #f9fafb;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      display: inline-block;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      margin-top: .5rem;
+      height: 4px;
+      width: 140px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #3b82f6 0%, #22c55e 50%, #f59e0b 100%);
+      box-shadow: 0 0 24px rgba(59,130,246,0.35);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🎓 Evently</a>
+      <div class="ms-auto">
+        <a href="/accounts/login/" class="btn btn-outline-light me-2">Login</a>
+        <a href="/accounts/signup/" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="content">
+      <h1 class="display-3 fw-bold">Welcome to Evently</h1>
+      <p class="lead">Manage and explore college events with ease 🎉</p>
+      <a href="#upcoming" class="btn btn-lg btn-primary mt-3">Explore Events</a>
+    </div>
+  </header>
+
+  
+
+  <!-- Ongoing Events - Horizontal Scroll -->
+  <section class="events-section" id="ongoing">
+    <div class="container">
+      <h2 class="mb-3 section-title">Ongoing Events</h2>
+      <div class="scroll-row">
+        <div class="card event-card p-4" data-event-id="1" data-title="48-Hour Hackathon" data-date="20–22 Sept 2025" data-time="9:00 AM" data-venue="Lab Block" data-desc="Build innovative solutions with mentors, snacks, and goodies for all teams." data-image="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&auto=format&fit=crop&q=80">
+          <img class="event-thumb mb-3" src="https://plus.unsplash.com/premium_photo-1681400690940-8eff232a8f7d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hackathon"/>
+          <div class="d-flex align-items-start justify-content-between">
+            <div>
+              <div class="event-title mb-1">48-Hour Hackathon</div>
+              <div class="event-meta">20–22 Sept 2025 • 9:00 AM – Lab Block</div>
+            </div>
+          </div>
+          <p class="event-desc mt-3 mb-3">Build innovative solutions with mentors, snacks, and goodies for all teams.</p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary btn-details">Details</button>
+            <button type="button" class="btn btn-sm btn-primary btn-register">Register</button>
+          </div>
+        </div>
+
+        <div class="card event-card p-4" data-event-id="2" data-title="Cricket Tournament" data-date="21 Sept 2025" data-time="10:00 AM" data-venue="Main Ground" data-desc="College houses compete in T20 format. Cheer for your team!" data-image="https://images.unsplash.com/photo-1540745295297-2c8b5f3c65e1?w=1200&auto=format&fit=crop&q=80">
+          <img class="event-thumb mb-3" src="https://plus.unsplash.com/premium_photo-1661890097755-fc3ee6dccb85?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cricket"/>
+          <div class="d-flex align-items-start justify-content-between">
+            <div>
+              <div class="event-title mb-1">Cricket Tournament</div>
+              <div class="event-meta">League Matches • 10:00 AM • Main Ground</div>
+            </div>
+          </div>
+          <p class="event-desc mt-3 mb-3">College houses compete in T20 format. Cheer for your team!</p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary btn-details">Details</button>
+            <button type="button" class="btn btn-sm btn-primary btn-register">Register</button>
+          </div>
+        </div>
+
+        <div class="card event-card p-4" data-event-id="3" data-title="Art Exhibition" data-date="22 Sept 2025" data-time="9:00 AM – 6:00 PM" data-venue="Auditorium Foyer" data-desc="Student artworks on display: paintings, sketches, and digital art." data-image="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&auto=format&fit=crop&q=80">
+          <img class="event-thumb mb-3" src="https://media.istockphoto.com/id/881421872/photo/art-gallery-is-open.jpg?s=2048x2048&w=is&k=20&c=pjzNfi5X2Qe6LTMlDRdj5fRb9NnoPOqRJXdwUHvRylE=" alt="Art Exhibition"/>
+          <div class="d-flex align-items-start justify-content-between">
+            <div>
+              <div class="event-title mb-1">Art Exhibition</div>
+              <div class="event-meta">9:00 AM – 6:00 PM • Auditorium Foyer</div>
+            </div>
+          </div>
+          <p class="event-desc mt-3 mb-3">Student artworks on display: paintings, sketches, and digital art.</p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary btn-details">Details</button>
+            <button type="button" class="btn btn-sm btn-primary btn-register">Register</button>
+          </div>
+        </div>
+
+        <div class="card event-card p-4" data-event-id="4" data-title="AI Workshop" data-date="23 Sept 2025" data-time="2:00 PM – 5:00 PM" data-venue="CSE Seminar Hall" data-desc="Hands-on intro to TensorFlow. Bring your laptop." data-image="https://images.unsplash.com/photo-1555949963-aa79dcee981d?w=1200&auto=format&fit=crop&q=80">
+          <img class="event-thumb mb-3" src="https://media.istockphoto.com/id/1206796363/photo/ai-machine-learning-hands-of-robot-and-human-touching-on-big-data-network-connection.jpg?s=2048x2048&w=is&k=20&c=NMisrXtMr49zx-Oix-7aCbd9LyoSRqaS-fjGo9qzGLk=" alt="AI Workshop"/>
+          <div class="d-flex align-items-start justify-content-between">
+            <div>
+              <div class="event-title mb-1">AI Workshop</div>
+              <div class="event-meta">2:00 PM – 5:00 PM • CSE Seminar Hall</div>
+            </div>
+          </div>
+          <p class="event-desc mt-3 mb-3">Hands-on intro to TensorFlow. Bring your laptop.</p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary btn-details">Details</button>
+            <button type="button" class="btn btn-sm btn-primary btn-register">Register</button>
+          </div>
+        </div>
+
+        <div class="card event-card p-4" data-event-id="5" data-title="Food Fest" data-date="24 Sept 2025" data-time="11:00 AM – 7:00 PM" data-venue="Central Lawn" data-desc="Popular street food stalls, live music, and fun contests." data-image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=80">
+          <img class="event-thumb mb-3" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&q=80" alt="Food Fest"/>
+          <div class="d-flex align-items-start justify-content-between">
+            <div>
+              <div class="event-title mb-1">Food Fest</div>
+              <div class="event-meta">11:00 AM – 7:00 PM • Central Lawn</div>
+            </div>
+          </div>
+          <p class="event-desc mt-3 mb-3">Popular street food stalls, live music, and fun contests.</p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary btn-details">Details</button>
+            <button type="button" class="btn btn-sm btn-primary btn-register">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events - Horizontal Scroll -->
+  <section style="background-color: antiquewhite;" class="events-section bg-light" id="upcoming">
+    <div class="container">
+      <h2 class="mb-3">Upcoming Events</h2>
+      <div class="scroll-row">
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Freshers' Orientation</h5>
+          <p class="mb-0 text-muted">20 Sept 2025 • Auditorium</p>
+        </div>
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Cultural Night</h5>
+          <p class="mb-0 text-muted">25 Sept 2025 • Open Air Theatre</p>
+        </div>
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Tech Talk: Cloud & AI</h5>
+          <p class="mb-0 text-muted">27 Sept 2025 • Seminar Hall</p>
+        </div>
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Hackathon Finals</h5>
+          <p class="mb-0 text-muted">28 Sept 2025 • Innovation Lab</p>
+        </div>
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Annual Sports Day</h5>
+          <p class="mb-0 text-muted">30 Sept 2025 • Sports Complex</p>
+        </div>
+        <div class="card event-card p-3">
+          <h5 class="fw-bold mb-1">Convocation Rehearsal</h5>
+          <p class="mb-0 text-muted">02 Oct 2025 • Auditorium</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailTitle">Event Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img id="detailImage" class="w-100 rounded mb-3" style="max-height: 280px; object-fit: cover;" alt="Event"/>
+          <p class="mb-1"><strong>Date:</strong> <span id="detailDate"></span></p>
+          <p class="mb-1"><strong>Time:</strong> <span id="detailTime"></span></p>
+          <p class="mb-1"><strong>Venue:</strong> <span id="detailVenue"></span></p>
+          <p class="mt-3" id="detailDesc"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary" id="detailRegisterBtn">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <input type="hidden" id="regEventId" />
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input class="form-control" id="regName" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" id="regEmail" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Year/Branch</label>
+              <input class="form-control" id="regMeta" placeholder="e.g., 3rd Year CSE" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+          </form>
+          <div id="registerMsg" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+    const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+
+    function openDetail(card){
+      document.getElementById('detailTitle').textContent = card.dataset.title;
+      document.getElementById('detailDate').textContent = card.dataset.date;
+      document.getElementById('detailTime').textContent = card.dataset.time;
+      document.getElementById('detailVenue').textContent = card.dataset.venue;
+      document.getElementById('detailDesc').textContent = card.dataset.desc;
+      document.getElementById('detailImage').src = card.dataset.image;
+      const id = card.dataset.eventId;
+      const regBtn = document.getElementById('detailRegisterBtn');
+      regBtn.onclick = () => openRegister(id);
+      detailModal.show();
+    }
+
+    function openRegister(eventId){
+      document.getElementById('registerMsg').innerHTML = '';
+      document.getElementById('registerForm').reset();
+      document.getElementById('regEventId').value = eventId;
+      registerModal.show();
+    }
+
+    document.querySelectorAll('.btn-details').forEach(btn => {
+      btn.addEventListener('click', () => openDetail(btn.closest('.event-card')));
+    });
+    document.querySelectorAll('.btn-register').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.closest('.event-card').dataset.eventId;
+        openRegister(id);
+      });
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const meta = document.getElementById('regMeta').value.trim();
+      if(!name || !email){
+        document.getElementById('registerMsg').innerHTML = '<div class="alert alert-danger">Please fill required fields.</div>';
+        return;
+      }
+      // Frontend-only demo success
+      document.getElementById('registerMsg').innerHTML = '<div class="alert alert-success">Registered successfully! Check your email for confirmation.</div>';
+      setTimeout(() => registerModal.hide(), 1200);
+    });
+  </script>
+</body>
+</html>
